@@ -6,12 +6,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) {
             const navHeight = 44;
             const targetPosition = target.offsetTop - navHeight;
-            
+
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
             });
-            
+
             // Close mobile menu if open
             if (window.innerWidth <= 768) {
                 navLinks.classList.remove('active');
@@ -39,13 +39,13 @@ const navBlur = document.querySelector('.nav-blur');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     if (currentScroll > 50) {
         navBlur.style.background = 'rgba(0, 0, 0, 0.85)';
     } else {
         navBlur.style.background = 'rgba(0, 0, 0, 0.8)';
     }
-    
+
     lastScroll = currentScroll;
 }, { passive: true });
 
@@ -86,11 +86,11 @@ const animateCounter = (element, target, suffix = '') => {
     const increment = target / steps;
     let current = 0;
     let frame = 0;
-    
+
     const timer = setInterval(() => {
         frame++;
         current += increment;
-        
+
         if (frame >= steps) {
             element.textContent = target + suffix;
             clearInterval(timer);
@@ -106,7 +106,7 @@ const statObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const statValue = entry.target.querySelector('.stat-value');
             const originalText = statValue.textContent.trim();
-            
+
             if (originalText.includes('$345B')) {
                 statValue.textContent = '$0B';
                 animateCounter(statValue, 345, 'B');
@@ -155,7 +155,7 @@ const statObserver = new IntersectionObserver((entries) => {
                     }
                 }, 33);
             }
-            
+
             statObserver.unobserve(entry.target);
         }
     });
@@ -169,7 +169,7 @@ document.querySelectorAll('.stat-item-apple').forEach(stat => {
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const orbs = document.querySelectorAll('.gradient-orb');
-    
+
     orbs.forEach((orb, index) => {
         const speed = 0.3 + (index * 0.1);
         orb.style.transform = `translate(${scrolled * speed * 0.1}px, ${scrolled * speed * 0.15}px)`;
@@ -178,11 +178,11 @@ window.addEventListener('scroll', () => {
 
 // Enhanced hover effects for impact cards
 document.querySelectorAll('.impact-card').forEach(card => {
-    card.addEventListener('mouseenter', function(e) {
+    card.addEventListener('mouseenter', function (e) {
         this.style.transform = 'translateY(-8px)';
     });
-    
-    card.addEventListener('mouseleave', function() {
+
+    card.addEventListener('mouseleave', function () {
         this.style.transform = 'translateY(0)';
     });
 });
@@ -199,14 +199,14 @@ inputs.forEach(input => {
         input.nextElementSibling.style.padding = '0 4px';
         input.nextElementSibling.style.color = 'var(--accent-blue)';
     }
-    
-    input.addEventListener('focus', function() {
+
+    input.addEventListener('focus', function () {
         this.parentElement.style.transform = 'scale(1.01)';
     });
-    
-    input.addEventListener('blur', function() {
+
+    input.addEventListener('blur', function () {
         this.parentElement.style.transform = 'scale(1)';
-        
+
         if (!this.value) {
             const label = this.nextElementSibling;
             label.style.top = '16px';
@@ -216,8 +216,8 @@ inputs.forEach(input => {
             label.style.color = 'var(--text-tertiary)';
         }
     });
-    
-    input.addEventListener('input', function() {
+
+    input.addEventListener('input', function () {
         if (this.value) {
             const label = this.nextElementSibling;
             label.style.top = '-8px';
@@ -235,25 +235,25 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
-        
+
         // Animate button
         submitBtn.textContent = 'Sending...';
         submitBtn.style.opacity = '0.6';
         submitBtn.style.pointerEvents = 'none';
-        
+
         // Simulate form submission
         setTimeout(() => {
             submitBtn.textContent = '✓ Sent';
             submitBtn.style.opacity = '1';
-            
+
             setTimeout(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.style.pointerEvents = 'auto';
                 contactForm.reset();
-                
+
                 // Reset labels
                 inputs.forEach(input => {
                     const label = input.nextElementSibling;
@@ -273,7 +273,7 @@ if (contactForm) {
 // Video placeholder interaction
 const videoPlaceholder = document.querySelector('.video-placeholder-apple');
 if (videoPlaceholder) {
-    videoPlaceholder.addEventListener('click', function() {
+    videoPlaceholder.addEventListener('click', function () {
         this.style.transform = 'scale(0.98)';
         setTimeout(() => {
             this.style.transform = 'scale(1)';
@@ -283,11 +283,11 @@ if (videoPlaceholder) {
 
 // Apple-style button ripple effect
 document.querySelectorAll('.btn-apple').forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
         const rect = this.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
+
         const ripple = document.createElement('div');
         ripple.style.position = 'absolute';
         ripple.style.width = '4px';
@@ -299,9 +299,9 @@ document.querySelectorAll('.btn-apple').forEach(button => {
         ripple.style.transform = 'translate(-50%, -50%) scale(0)';
         ripple.style.animation = 'appleRipple 0.6s ease-out';
         ripple.style.pointerEvents = 'none';
-        
+
         this.appendChild(ripple);
-        
+
         setTimeout(() => ripple.remove(), 600);
     });
 });
@@ -329,20 +329,6 @@ style.textContent = `
         gap: 16px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    
-    .mobile-menu-btn.active span:nth-child(1) {
-        transform: rotate(45deg) translate(4px, 4px);
-    }
-    
-    .mobile-menu-btn.active span:nth-child(2) {
-        opacity: 0;
-        transform: translateX(-10px);
-    }
-    
-    .mobile-menu-btn.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(4px, -4px);
-    }
-    
     .input-wrapper {
         transition: transform 0.2s cubic-bezier(0.28, 0.11, 0.32, 1);
     }
@@ -353,7 +339,7 @@ document.head.appendChild(style);
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.6s cubic-bezier(0.28, 0.11, 0.32, 1)';
-    
+
     requestAnimationFrame(() => {
         document.body.style.opacity = '1';
     });
@@ -361,11 +347,11 @@ window.addEventListener('load', () => {
 
 // Add subtle scale animation to team cards on hover
 document.querySelectorAll('.team-card-apple').forEach(card => {
-    card.addEventListener('mouseenter', function() {
+    card.addEventListener('mouseenter', function () {
         this.style.transform = 'translateY(-12px) scale(1.02)';
     });
-    
-    card.addEventListener('mouseleave', function() {
+
+    card.addEventListener('mouseleave', function () {
         this.style.transform = 'translateY(0) scale(1)';
     });
 });
