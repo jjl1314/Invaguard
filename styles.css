@@ -32,7 +32,7 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
-    
+    width: 100%;
 }
 
 .container {
@@ -120,19 +120,22 @@ body {
 /* Add this to make sure orbs overflow properly */
 .hero {
     position: relative;
-    height: 90vh; /* Changed from 90vh to 85vh */
+    height: 90vh;
+    /* Changed from 90vh to 85vh */
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--black);
     overflow: visible !important;
-    padding-bottom: 0; /* Changed from 20px to 0 */
+    padding-bottom: 0;
+    /* Changed from 20px to 0 */
 }
 
 .hero-background {
     position: absolute;
     inset: 0;
-    overflow: visible !important; /* Changed from hidden to visible */
+    overflow: visible !important;
+    /* Changed from hidden to visible */
 }
 
 .gradient-orb {
@@ -172,21 +175,34 @@ body {
 }
 
 @keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(50px, -50px) scale(1.1); }
-    66% { transform: translate(-30px, 30px) scale(0.9); }
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-30px, 30px) scale(0.9);
+    }
 }
 
 .hero-content {
     position: relative;
     z-index: 1;
     text-align: center;
-    max-width: 1200px; /* Changed from 980px to 1200px */
+    max-width: 1200px;
+    /* Changed from 980px to 1200px */
     padding: 0 40px;
-    width: 100%; /* Add this */
+    width: 100%;
+    /* Add this */
 }
 
-.section-title-apple, .hero-title {
+.section-title-apple,
+.hero-title {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s ease forwards;
@@ -216,6 +232,7 @@ body {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -308,15 +325,25 @@ body {
 }
 
 @keyframes scrollLine {
-    0%, 100% { opacity: 0; transform: scaleY(0); }
-    50% { opacity: 1; transform: scaleY(1); }
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
 }
 
 /* Stats Showcase - Apple Style */
 .stats-showcase {
     padding: 40px 0;
     background: var(--black);
-    margin-top: -140px; /* Add this to pull stats up */
+    margin-top: -140px;
+    /* Add this to pull stats up */
 }
 
 .stats-grid-apple {
@@ -370,7 +397,8 @@ body {
     line-height: 1.1;
     letter-spacing: -0.02em;
     color: var(--text-primary);
-    white-space: nowrap; /* Prevent unwanted line breaks in section titles */
+    white-space: nowrap;
+    /* Prevent unwanted line breaks in section titles */
 }
 
 /* Problem Section - Apple Style */
@@ -528,8 +556,17 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.1); }
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
 }
 
 .product-placeholder {
@@ -552,7 +589,7 @@ body {
     height: 100%;
     background: linear-gradient(135deg, var(--medium-grey) 0%, var(--dark-grey) 100%);
     border-radius: 50%;
-    box-shadow: 
+    box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.5),
         inset 0 0 40px rgba(0, 113, 227, 0.2);
     border: 1px solid var(--border-grey);
@@ -806,10 +843,10 @@ body {
     transition: all 0.3s;
 }
 
-.input-wrapper input:focus + label,
-.input-wrapper input:not(:placeholder-shown) + label,
-.input-wrapper textarea:focus + label,
-.input-wrapper textarea:not(:placeholder-shown) + label {
+.input-wrapper input:focus+label,
+.input-wrapper input:not(:placeholder-shown)+label,
+.input-wrapper textarea:focus+label,
+.input-wrapper textarea:not(:placeholder-shown)+label {
     top: -8px;
     left: 12px;
     font-size: 12px;
@@ -906,83 +943,100 @@ body {
     .solution-content-wrapper {
         grid-template-columns: 1fr;
     }
-    
+
     .contact-wrapper-apple {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-grid-apple {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
+    .section-title-apple {
+        white-space: normal;
+        /* Allow wrapping on mobile */
+        line-height: 1.2;
+        word-break: keep-all;
+        overflow-wrap: normal;
+    }
+
+    /* Specifically for the hero title lines */
+    .hero-title .title-line {
+        white-space: normal;
+        display: block;
+    }
+
+
+
+
     .nav-links {
         display: none;
     }
-    
+
     .mobile-menu-btn {
         display: flex;
     }
-    
+
     .hero-title {
         font-size: 48px;
     }
-    
+
     .hero-subtitle {
         font-size: 21px;
     }
-    
+
     .stats-grid-apple {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
-    
+
     .stat-value {
         font-size: 48px;
     }
-    
+
     .content-grid-apple {
         grid-template-columns: 1fr;
     }
-    
+
     .impact-cards {
         grid-template-columns: 1fr;
     }
-    
+
     .tech-timeline {
         padding: 0 20px;
     }
-    
+
     .timeline-item {
         grid-template-columns: 60px 1fr;
         gap: 20px;
     }
-    
+
     .timeline-number {
         width: 60px;
         height: 60px;
         font-size: 24px;
     }
-    
+
     .timeline-connector {
         left: 60px;
         height: 40px;
     }
-    
+
     .team-grid-apple {
         grid-template-columns: 1fr;
     }
-    
+
     .form-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-grid-apple {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .footer-bottom-apple {
         flex-direction: column;
         gap: 20px;
