@@ -120,16 +120,19 @@ body {
 /* Add this to make sure orbs overflow properly */
 .hero {
     position: relative;
-    height: 90vh;
-    /* Changed from 90vh to 85vh */
+    padding: 250px 0 50px;
+    /* Top, sides, bottom */
+    height: 700px;
+    /* Total height including padding */
+    box-sizing: border-box;
+    /* Include padding in height */
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--black);
     overflow: visible !important;
-    padding-bottom: 0;
-    /* Changed from 20px to 0 */
 }
+
 
 .hero-background {
     position: absolute;
@@ -262,6 +265,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 120px;
 }
 
 /* Apple-Style Buttons */
@@ -339,11 +343,47 @@ body {
 }
 
 /* Stats Showcase - Apple Style */
+/* Reveal stats automatically after page loads */
 .stats-showcase {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
     padding: 40px 0;
     background: var(--black);
-    margin-top: -140px;
-    /* Add this to pull stats up */
+    filter: blur(10px);
+    animation: revealStats 0.8s cubic-bezier(0.215, 0.610, 0.355, 1) 0.5s forwards;
+    /* Add containment to prevent affecting other elements */
+    contain: layout paint style;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes revealStats {
+    to {
+        opacity: 1;
+        transform: translateY(-80px) scale(1);
+        filter: blur(0);
+    }
+}
+
+.stats-showcase.revealed {
+    opacity: 1;
+    transform: translateY(-80px) scale(1);
+    filter: blur(0);
+}
+
+/* Only remove negative margin when definitely zoomed */
+@media (min-width: 1800px) {
+    .stats-showcase {
+        margin-top: 0;
+    }
+}
+
+/* Or use a smaller negative margin when zoomed */
+@media (min-width: 1600px) {
+    .stats-showcase {
+        margin-top: -20px;
+    }
 }
 
 .stats-grid-apple {
@@ -968,9 +1008,6 @@ body {
         display: block;
     }
 
-
-
-
     .nav-links {
         display: none;
     }
@@ -986,6 +1023,7 @@ body {
     .hero-subtitle {
         font-size: 21px;
     }
+
 
     .stats-grid-apple {
         grid-template-columns: repeat(2, 1fr);

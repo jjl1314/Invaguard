@@ -1,6 +1,4 @@
-// Apple-Quality Smooth Interactions and Animations
-
-// Smooth Scroll with Apple-style easing
+// Smooth Scroll 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -34,7 +32,7 @@ if (mobileMenuBtn) {
     });
 }
 
-// Enhanced Navbar on Scroll - Apple Style
+// Enhanced Navbar on Scroll 
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 const navBlur = document.querySelector('.nav-blur');
@@ -393,4 +391,4 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     });
 }
 
-console.log('Invaguard - Apple-quality website loaded 🚀');
+console.log('Invaguard');
