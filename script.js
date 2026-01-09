@@ -271,13 +271,16 @@ if (contactForm) {
 }
 
 // Video placeholder interaction
-const videoPlaceholder = document.querySelector('.video-placeholder-apple');
+const videoPlaceholder = document.getElementById('videoPlaceholder');
 if (videoPlaceholder) {
-    videoPlaceholder.addEventListener('click', function () {
-        this.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-            this.style.transform = 'scale(1)';
-        }, 150);
+    videoPlaceholder.addEventListener('click', function (e) {
+        // Only apply the animation if they're not using middle-click or ctrl-click
+        if (!e.ctrlKey && !e.metaKey && !e.shiftKey && e.button === 0) {
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        }
     });
 }
 

@@ -757,6 +757,24 @@ body {
     transition: all 0.3s;
 }
 
+.video-placeholder-apple {
+    position: relative;
+    overflow: hidden;
+    /* Add any existing styles you have */
+}
+
+.video-text {
+    position: relative;
+    z-index: 2;
+    /* This ensures text stays above the thumbnail */
+}
+
+.play-button-apple {
+    position: relative;
+    z-index: 2;
+    /* This ensures play button stays above the thumbnail */
+}
+
 .video-placeholder-apple:hover {
     background: var(--medium-grey);
 }
